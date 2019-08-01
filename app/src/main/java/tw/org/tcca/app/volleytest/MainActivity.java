@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -15,6 +16,9 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private MainApp mainApp;
@@ -96,7 +100,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                 },
                 null
-        );
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("cname", "test1234");
+                params.put("tel", "123456789");
+                params.put("addr", "test1234");
+
+                return params;
+            }
+        };
 
         mainApp.queue.add(stringRequest);
     }
