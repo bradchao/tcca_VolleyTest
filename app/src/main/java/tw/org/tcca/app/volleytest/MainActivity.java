@@ -41,4 +41,21 @@ public class MainActivity extends AppCompatActivity {
         mainApp.queue.add(stringRequest);
 
     }
+
+    public void getTest2(View view) {
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.GET,
+                "http://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAgriculturalProduce.aspx",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.v("brad", response);
+                    }
+                },
+                null
+        );
+
+        mainApp.queue.add(stringRequest);
+
+    }
 }

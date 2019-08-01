@@ -14,6 +14,12 @@
         android:text="Get Test1"
         android:onClick="getTest1"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Test2"
+        android:onClick="getTest2"
+        />
     <TextView
         android:id="@+id/mesg"
         android:layout_width="match_parent"
