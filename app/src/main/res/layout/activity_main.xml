@@ -26,6 +26,12 @@
         android:text="Post Test1"
         android:onClick="postTest1"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Post Test2"
+        android:onClick="postTest2"
+        />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

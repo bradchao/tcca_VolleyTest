@@ -114,4 +114,28 @@ public class MainActivity extends AppCompatActivity {
 
         mainApp.queue.add(stringRequest);
     }
+    public void postTest2(View view) {
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                "https://www.bradchao.com/autumn/fetchCust.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.v("brad", response);
+                        //parseJSON(response);
+                    }
+                },
+                null
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("t", "a");
+
+                return params;
+            }
+        };
+
+        mainApp.queue.add(stringRequest);
+    }
 }
