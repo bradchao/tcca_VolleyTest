@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -25,6 +26,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     private MainApp mainApp;
     private TextView mesg;
+    private ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mainApp = (MainApp)getApplication();
 
         mesg = findViewById(R.id.mesg);
+        img = findViewById(R.id.img);
 
     }
 
@@ -142,11 +145,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void imageTest(View view) {
-        ImageRequest request = new ImageRequest("url",
+        ImageRequest request = new ImageRequest("https://s2.yimg.com/uu/api/res/1.2/a.SONd_J4TeE.XJ7SlBw.g--~B/Zmk9dWxjcm9wO2N3PTMxMTtkeD0xMTE7Y2g9MTg3O2R5PTA7dz0zOTI7aD0zMDg7Y3I9MTthcHBpZD15dGFjaHlvbg--/https://media.zenfs.com/zh-tw/setn.com.tw/cf9b4713d5c30bda11e5f83fd9a1bd34",
                 new Response.Listener<Bitmap>() {
                     @Override
                     public void onResponse(Bitmap response) {
-                        
+                        img.setImageBitmap(response);
                     }
                 },
                 0,0,
