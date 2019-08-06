@@ -2,6 +2,7 @@ package tw.org.tcca.app.volleytest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -137,5 +139,18 @@ public class MainActivity extends AppCompatActivity {
         };
 
         mainApp.queue.add(stringRequest);
+    }
+
+    public void imageTest(View view) {
+        ImageRequest request = new ImageRequest("url",
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        
+                    }
+                },
+                0,0,
+                Bitmap.Config.ARGB_8888, null);
+        mainApp.queue.add(request);
     }
 }
