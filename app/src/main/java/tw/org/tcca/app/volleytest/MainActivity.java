@@ -13,7 +13,9 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -156,4 +158,37 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap.Config.ARGB_8888, null);
         mainApp.queue.add(request);
     }
+
+    public void jsonTest(View view) {
+        JsonArrayRequest request = new JsonArrayRequest("http://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvAgriculturalProduce.aspx",
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        parseJSON(response);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.v("brad", error.toString());
+            }
+        });
+        mainApp.queue.add(request);
+
+    }
+
+    private void parseJSON(JSONArray root){
+        try{
+        for (int i=0; i<root.length(); i++){
+            JSONObject row = root.getJSONObject(i);
+            Log.v("brad", row.getString("Name") + ":"
+             + row.getString("SalePlace"));
+
+        }
+        }catch (Exception e){
+            Log.v("brad", e.toString());
+        }
+
+    }
+
+
 }
